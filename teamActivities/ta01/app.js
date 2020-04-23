@@ -6,9 +6,10 @@ const server = http.createServer((req, res) => {
     if (url === '/') {
         res.setHeader("Content-Type", 'text/html');
         res.write('<html>');
-        res.write('<head><title>Hello Browser!</Title></head>');
-        res.write('<body>');
-        res.write('<h1>Welcome to my world!</h1>');
+        res.write('<head><title>Sports</Title>');
+        res.write('<style> body{background-color: bisque;}</style>')
+        res.write('</head><body>');
+        res.write('<h1>Sports Land</h1>');
         // navigation to your activities endpoint.
         res.write('<a href="./activities">Activities List</a></br>');
         return res.end();
@@ -18,11 +19,12 @@ const server = http.createServer((req, res) => {
         res.setHeader("Content-Type", 'text/html');
 
         res.write('<html>');
-        res.write('<head><title>Sports</title><head>');
+        res.write('<head><title>Sports</title>');
+        res.write('<style> body{background-color: bisque;}</style><head><body>')
         sports.forEach(element => {
             res.write("<li>" + element + "<li>")
         });
-        res.write('<body><form action="/add-activity" method="POST">'
+        res.write('<form action="/add-activity" method="POST">'
             + '<input type="text">'
             + '<button type="submit">Submit</button>'
             + '</form></body>');
@@ -34,7 +36,7 @@ const server = http.createServer((req, res) => {
     if (url === '/add-activity' && _method === 'POST') {
         const body = [];
 
-        req.on('data', chunk => {
+        req.on('data', (chunk) => {
             console.log (chunk);
             body.push(chunk);
         });
