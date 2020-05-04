@@ -1,0 +1,1 @@
+"use strict";var path=require("path"),express=require("express"),rootDir=require("../util/path"),adminData=require("./admin"),router=express.Router();router.get("/",function(r,e,t){var o=adminData.products;e.render("shop",{prods:o,docTitle:"Shop"})}),module.exports=router;
